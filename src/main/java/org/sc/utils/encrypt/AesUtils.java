@@ -1,4 +1,4 @@
-package crypto.desaes;
+package org.sc.utils.encrypt;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
@@ -11,8 +11,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * 360 Financial Copyright
- *
  * @author shen chen
  * @description aes加密
  * @date 2023/4/24 16:32

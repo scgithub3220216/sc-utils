@@ -1,4 +1,4 @@
-package crypto.kaiser;
+package org.sc.kaiser;
 
 import java.io.*;
 

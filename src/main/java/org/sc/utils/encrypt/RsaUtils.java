@@ -1,4 +1,4 @@
-package crypto.rsa;
+package org.sc.utils.encrypt;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
@@ -12,8 +12,6 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
 /**
- * 360 Financial Copyright
- *
  * @author shen chen
  * @description 非对称加密 Rsa 工具类
  * @date 2023/4/25 17:14

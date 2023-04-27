@@ -1,15 +1,16 @@
-package crypto.utils;
+package org.sc.utils.signature;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
-import crypto.rsa.RsaUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.sc.utils.encrypt.RsaUtils;
 
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 
 
 /**
- * 360 Financial Copyright
+ * 1. 获取签名
+ * 2. 效验签名
  *
  * @author shen chen
  * @description 签名工具类
@@ -42,9 +43,9 @@ public class SignatureUtils {
         boolean verifyFlag = verifySignature(text, algorithm, publicKey, signatureData);
         System.out.println("verifyFlag = " + verifyFlag);
 
-        String signature = getSignature(text,SHA_1);
+        String signature = getSignature(text, SHA_1);
         System.out.println("signature = " + signature);
-        boolean b = verifySignature(text, signature,SHA_1);
+        boolean b = verifySignature(text, signature, SHA_1);
         System.out.println("b = " + b);
     }
 
@@ -96,18 +97,18 @@ public class SignatureUtils {
     /**
      * 根据私钥 获取签名
      *
-     * @param text       原文
+     * @param content    原文
      * @param algorithm  算法
      * @param privateKey 私钥
      * @return 签名
      */
-    public static String getSignature(String text, String algorithm, PrivateKey privateKey) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+    public static String getSignature(String content, String algorithm, PrivateKey privateKey) throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         // 获取签名对象
         Signature signature = Signature.getInstance(algorithm);
         // 初始化签名
         signature.initSign(privateKey);
         // 传入原文
-        signature.update(text.getBytes());
+        signature.update(content.getBytes());
         // 开始签名
         byte[] sign = signature.sign();
         // 对签名数据进行 Base64 编码
@@ -133,13 +134,13 @@ public class SignatureUtils {
     /**
      * 根据公钥 效验签名
      *
-     * @param text          原文
+     * @param content       原文
      * @param algorithm     算法
      * @param publicKey     公钥
      * @param signatureData 签名
      * @return 数据是否被篡改
      */
-    private static boolean verifySignature(String text, String algorithm, PublicKey publicKey, String signatureData) {
+    private static boolean verifySignature(String content, String algorithm, PublicKey publicKey, String signatureData) {
         boolean verify;
         try {
             // 获取签名对象
@@ -147,7 +148,7 @@ public class SignatureUtils {
             // 初始化签名
             signature.initVerify(publicKey);
             // 传入原文
-            signature.update(text.getBytes());
+            signature.update(content.getBytes());
             // 效验数据
             verify = signature.verify(Base64.decode(signatureData));
         } catch (Exception e) {

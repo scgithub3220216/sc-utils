@@ -14,27 +14,23 @@ import java.security.NoSuchAlgorithmException;
  * 360 Financial Copyright
  *
  * @author shen chen
- * @description
+ * @description aes加密
  * @date 2023/4/24 16:32
  */
-public class DesAesDemo {
-    /**
-     * des 算法的秘钥必须是8个字节
-     */
-    private static final String DES_KEY = "12345678";
+public class AesUtils {
     /**
      * Aes 算法的秘钥必须是16个字节
      */
-    private static final String AES_KEY = "1234567812345678";
+    private static final String AES_KEY = "$w3A567#1.34d67&";
     private static final String ALGORITHM = "AES";
-    private static final String TRANSFORMATION = "AES/ECB/PKCSPadding";
+    private static final String TRANSFORMATION = "AES/ECB/PKCS5Padding";
 
 
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-        String crypto = encryptDES("这是待加密的原文", ALGORITHM, TRANSFORMATION, AES_KEY);
+        String crypto = encrypt("这是待加密的原文", ALGORITHM, TRANSFORMATION, AES_KEY);
         System.out.println("加密 = " + crypto);
         // 解密
-        String decryptDES = decryptDES(crypto, ALGORITHM, TRANSFORMATION, AES_KEY);
+        String decryptDES = decrypt(crypto, ALGORITHM, TRANSFORMATION, AES_KEY);
         System.out.println("解密 = " + decryptDES);
     }
 
@@ -47,7 +43,7 @@ public class DesAesDemo {
      * @param securityKey    秘钥
      * @return 密文
      */
-    public static String encryptDES(String input, String algorithm, String transformation, String securityKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+    public static String encrypt(String input, String algorithm, String transformation, String securityKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
         // 获取加密对象  参数表示用什么类型加密
         Cipher cipher = getCipher(Cipher.ENCRYPT_MODE, algorithm, transformation, securityKey);
         // 进行加密
@@ -65,7 +61,7 @@ public class DesAesDemo {
      * @param securityKey    秘钥
      * @return 明文
      */
-    public static String decryptDES(String input, String algorithm, String transformation, String securityKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public static String decrypt(String input, String algorithm, String transformation, String securityKey) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Cipher cipher = getCipher(Cipher.DECRYPT_MODE, algorithm, transformation, securityKey);
         byte[] bytes = cipher.doFinal(Base64.decode(input));
         return new String(bytes);

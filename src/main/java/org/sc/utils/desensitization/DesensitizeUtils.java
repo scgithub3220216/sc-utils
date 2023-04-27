@@ -1,6 +1,7 @@
 package org.sc.utils.desensitization;
 
 import org.apache.commons.lang3.StringUtils;
+import org.sc.utils.Constants;
 
 import java.text.MessageFormat;
 import java.util.Objects;

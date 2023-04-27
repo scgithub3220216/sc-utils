@@ -1,0 +1,84 @@
+
+*/indexes/*
+
+*/src/main/webapp/WEB-INF/classes/*
+*/src/main/webapp/userfiles/*
+
+
+*/src/main/webapp/META-INF/MANIFEST.MF
+*/src/main/webapp/WEB-INF/lib/*
+*/src/main/webapp/static/crm/basicNew.js
+
+
+*/src/main/webapp/static/crm/basicNew.js
+# maven ignore
+target/
+*.war
+*.rar
+*.ear
+*.zip
+*.tar
+*.tar.gz
+
+
+# project logs
+logs/
+out/
+
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+.factorypath
+# idea ignore
+.idea/
+.vertx/*
+*/target/*
+.idea/*
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+temp/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+.mymetadata
+.checkstyle
+.externalToolBuilders/*
+
+
+# system ignore
+.DS_Store
+<<<<<<< HEAD
+debug.launch
+.factorypath
+=======
+Thumbs.db
+
+
+# node_modules
+node_modules
+
+
+*.versionsBackup
+
+.class
+
+
+# project logs
+logs/
+out/
+
+# jrebel
+rebel.xml
+.flattened-pom.xml
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+>>>>>>> master
